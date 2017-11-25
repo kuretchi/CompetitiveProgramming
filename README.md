@@ -24,7 +24,7 @@
 - ‘½”{’·—L—” [[BigRational.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Math/BigRational.cs)]
 - (FX [[MathExtensions.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Math/MathExtensions.cs)])
   - GCD (Gcd)
-  - LCM (Gcd)
+  - LCM (Lcm)
   - —^‚¦‚ç‚ê‚½”ñ•‰®”‚ğ’´‚¦‚È‚¢Å‘å‚Ì 2 ‚×‚« (HighestOneBit)
   - —İæ (Pow)
   - ŠKæ (Fact)
