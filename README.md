@@ -4,7 +4,7 @@
 
 ## Contents
 
-### 一般的なアルゴリズム [[Algorithm](https://github.com/kuretchi/CompetitiveProgramming/tree/master/CompetitiveProgramming/Algorithms)]
+### 一般的なアルゴリズム [[Algorithms](https://github.com/kuretchi/CompetitiveProgramming/tree/master/CompetitiveProgramming/Algorithms)]
 
 - 二分探索 [[BinarySearch.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Algorithms/BinarySearch.cs)]
 - 座標圧縮 [[CoordinateCompressor.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Algorithms/CoordinateCompressor.cs)]
