@@ -33,6 +33,7 @@
 
 - Fenwick Tree (Binary Indexed Tree) [[FenwickTree.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/RangeQuery/FenwickTree.cs)]
 - ‚¢‚à‚·–@ [[Imos.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/RangeQuery/Imos.cs)]
+- 2ŽŸŒ³‚¢‚à‚·–@ [[Imos2D.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/RangeQuery/Imos2D.cs)]
 - Segment Tree [[SegmentTree.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/RangeQuery/SegmentTree.cs)]
 
 ### Šg’£ [[Extensions](https://github.com/kuretchi/CompetitiveProgramming/tree/master/CompetitiveProgramming/Extensions)]
