@@ -19,6 +19,7 @@ namespace CompetitiveProgramming.Algorithms
             _decompress = arr;
             var pi = default(int);
             var pa = default(T);
+            if (arr.Any()) _compress.Add(arr[0], 0);
 
             for (var i = 0; i < arr.Length; i++)
                 if (i > 0 && !arr[i].Equals(pa)) _compress[pa = arr[i]] = pi = i;
