@@ -71,16 +71,8 @@ namespace CompetitiveProgramming.Algorithms
                 else ng = mid;
             }
 
-            if (predicate(ok))
-            {
-                i = ok;
-                return true;
-            }
-            else
-            {
-                i = default(int);
-                return false;
-            }
+            i = ok;
+            return true;
         }
     }
 }
