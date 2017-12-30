@@ -10,13 +10,12 @@ namespace CompetitiveProgramming.RangeQuery
 {
     public class SegmentTree<T, TMonoid> : IReadOnlyList<T> where TMonoid : struct, IMonoid<T>
     {
-        private readonly TMonoid _monoid;
+        private static readonly TMonoid _monoid = default(TMonoid);
         private readonly T[] _tree;
         private readonly int _size;
 
         public SegmentTree(int length)
         {
-            _monoid = default(TMonoid);
             if (length > (int.MaxValue >> 1) + 1) throw new ArgumentException();
             _size = 1;
             while (_size < length) _size <<= 1;
@@ -26,7 +25,6 @@ namespace CompetitiveProgramming.RangeQuery
 
         public SegmentTree(IList<T> collection)
         {
-            _monoid = default(TMonoid);
             if (collection.Count > (int.MaxValue >> 1) + 1) throw new ArgumentException();
             _size = 1;
             while (_size < collection.Count) _size <<= 1;
