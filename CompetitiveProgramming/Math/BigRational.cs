@@ -11,12 +11,6 @@ namespace CompetitiveProgramming.Math
 {
     public struct BigRational : IComparable<BigRational>, IEquatable<BigRational>
     {
-        public static readonly Group<BigRational> Sum
-            = new Group<BigRational>(0, (x, y) => x + y, x => -x);
-
-        public static readonly Group<BigRational> Product
-            = new Group<BigRational>(0, (x, y) => x * y, x => x.Invert());
-
         public BigRational(BigInteger numer, BigInteger denom)
         {
             if (denom == 0) throw new ArgumentException();

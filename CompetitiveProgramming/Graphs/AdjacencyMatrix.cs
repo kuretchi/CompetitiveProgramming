@@ -7,30 +7,28 @@ using CompetitiveProgramming.Extensions;
 
 namespace CompetitiveProgramming.Graphs
 {
-    public class AdjacencyMatrix<T>
+    public class AdjacencyMatrix<T, TMinMonoid, TSumMonoid>
+        where TMinMonoid : struct, IMonoid<T>
+        where TSumMonoid : struct, IMonoid<T>
     {
+        private static readonly TMinMonoid _min = default(TMinMonoid);
+        private static readonly TSumMonoid _sum = default(TSumMonoid);
         private readonly T[][] _matrix;
 
-        public AdjacencyMatrix(int length, Monoid<T> min, Monoid<T> sum)
+        public AdjacencyMatrix(int length)
         {
             _matrix = new T[length][];
-            for (var i = 0; i < length; i++) _matrix[i] = Enumerable.Repeat(min.Unit, length).ToArray();
-            for (var i = 0; i < length; i++) _matrix[i][i] = sum.Unit;
+            for (var i = 0; i < length; i++) _matrix[i] = Enumerable.Repeat(_min.Unit, length).ToArray();
+            for (var i = 0; i < length; i++) _matrix[i][i] = _sum.Unit;
             this.Length = length;
-            this.Min = min;
-            this.Sum = sum;
         }
 
         public int Length { get; }
 
-        public Monoid<T> Min { get; }
-
-        public Monoid<T> Sum { get; }
-
         public T this[int source, int target]
         {
             get => _matrix[source][target];
-            set => _matrix[source][target] = this.Min.Append(_matrix[source][target], value);
+            set => _matrix[source][target] = _min.Append(_matrix[source][target], value);
         }
 
         public T[][] ToArray() => _matrix;

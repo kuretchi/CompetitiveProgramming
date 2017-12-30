@@ -6,22 +6,22 @@ using System.Threading.Tasks;
 
 namespace CompetitiveProgramming.Extensions
 {
-    public class Group<T> : Monoid<T>
+    public interface IGroup<T> : IMonoid<T>
     {
-        public Group(T unit, Func<T, T, T> append, Func<T, T> invert) : base(unit, append)
-        {
-            this.Invert = invert;
-        }
-
-        public Func<T, T> Invert { get; }
+        T Invert(T value);
     }
 
-    public static class Group
+    public struct SumGroup_Int32 : IGroup<int>
     {
-        public static Group<T> Create<T>(T unit, Func<T, T, T> append, Func<T, T> invert)
-            => new Group<T>(unit, append, invert);
+        public int Unit => 0;
+        public int Append(int left, int right) => left + right;
+        public int Invert(int value) => -value;
+    }
 
-        public static readonly Group<int> Sum_Int32 = new Group<int>(0, (x, y) => x + y, x => -x);
-        public static readonly Group<long> Sum_Int64 = new Group<long>(0L, (x, y) => x + y, x => -x);
+    public struct SumGroup_Int64 : IGroup<long>
+    {
+        public long Unit => 0L;
+        public long Append(long left, long right) => left + right;
+        public long Invert(long value) => -value;
     }
 }

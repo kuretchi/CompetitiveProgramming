@@ -8,64 +8,30 @@ using CompetitiveProgramming.Extensions;
 
 namespace CompetitiveProgramming.RangeQuery
 {
-    public class FenwickTree<T> : IReadOnlyList<T>
+    public class FenwickTreeOnMonoid<T, TMonoid> : IEnumerable<T>
+        where TMonoid : struct, IMonoid<T> // commutative
     {
-        private readonly T[] _tree;
+        private static readonly TMonoid _monoid = default(TMonoid);
+        protected readonly T[] _tree;
 
-        public FenwickTree(int length, Monoid<T> monoid)
+        public FenwickTreeOnMonoid(int length)
         {
-            _tree = Enumerable.Repeat(monoid.Unit, length + 1).ToArray();
-            this.Monoid = monoid;
+            _tree = Enumerable.Repeat(_monoid.Unit, length + 1).ToArray();
         }
 
-        public FenwickTree(int length, Group<T> group) : this(length, (Monoid<T>)group)
-        {
-            this.Group = group;
-        }
-
-        public FenwickTree(IEnumerable<T> collection, Monoid<T> monoid)
+        public FenwickTreeOnMonoid(IEnumerable<T> collection)
         {
             var count = collection.Count();
-            this.Monoid = monoid;
             _tree = new T[count + 1];
             collection.ForEach((x, i) => { _tree[i + 1] = x; });
             for (var i = 1; i < count; i++)
             {
                 var j = i + (i & -i);
-                _tree[j] = monoid.Append(_tree[j], _tree[i]);
+                _tree[j] = _monoid.Append(_tree[j], _tree[i]);
             }
         }
-
-        public FenwickTree(IEnumerable<T> collection, Group<T> group) : this(collection, (Monoid<T>)group)
-        {
-            this.Group = group;
-        }
-
-        public Monoid<T> Monoid { get; } // commutative
-
-        public Group<T> Group { get; } // commutative
 
         public int Length => _tree.Length - 1;
-
-        int IReadOnlyCollection<T>.Count => this.Length;
-
-        public T this[int i]
-        {
-            get => this[i, i];
-            set => this.Append(i, this.Group.Append(value, this.Group.Invert(this[i])));
-        }
-
-        public T this[int l, int r]
-        {
-            get
-            {
-                var acc = this.Group.Unit;
-                r++;
-                for (; r > l; r -= r & -r) acc = this.Group.Append(acc, _tree[r]);
-                for (; l > r; l -= l & -l) acc = this.Group.Append(acc, this.Group.Invert(_tree[l]));
-                return acc;
-            }
-        }
 
         public IEnumerator<T> GetEnumerator()
         {
@@ -76,14 +42,44 @@ namespace CompetitiveProgramming.RangeQuery
 
         public T Concat(int l)
         {
-            var acc = this.Monoid.Unit;
-            for (l++; l > 0; l -= l & -l) acc = this.Monoid.Append(acc, _tree[l]);
+            var acc = _monoid.Unit;
+            for (l++; l > 0; l -= l & -l) acc = _monoid.Append(acc, _tree[l]);
             return acc;
         }
 
         public void Append(int r, T value)
         {
-            for (r++; r <= this.Length; r += r & -r) _tree[r] = this.Monoid.Append(_tree[r], value);
+            for (r++; r <= this.Length; r += r & -r) _tree[r] = _monoid.Append(_tree[r], value);
+        }
+    }
+
+    public class FenwickTree<T, TGroup> : FenwickTreeOnMonoid<T, TGroup>, IReadOnlyList<T>
+        where TGroup : struct, IGroup<T> // commutative
+    {
+        private static readonly TGroup _group = default(TGroup);
+
+        public FenwickTree(int length) : base(length) { }
+
+        public FenwickTree(IEnumerable<T> collection) : base(collection) { }
+
+        int IReadOnlyCollection<T>.Count => this.Length;
+
+        public T this[int i]
+        {
+            get => this[i, i];
+            set => this.Append(i, _group.Append(value, _group.Invert(this[i])));
+        }
+
+        public T this[int l, int r]
+        {
+            get
+            {
+                var acc = _group.Unit;
+                r++;
+                for (; r > l; r -= r & -r) acc = _group.Append(acc, _tree[r]);
+                for (; l > r; l -= l & -l) acc = _group.Append(acc, _group.Invert(_tree[l]));
+                return acc;
+            }
         }
     }
 }

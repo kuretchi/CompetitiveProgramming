@@ -7,27 +7,33 @@ using static System.Math;
 
 namespace CompetitiveProgramming.Extensions
 {
-    public class Monoid<T>
+    public interface IMonoid<T>
     {
-        public Monoid(T unit, Func<T, T, T> append)
-        {
-            this.Unit = unit;
-            this.Append = append;
-        }
-
-        public T Unit { get; }
-
-        public Func<T, T, T> Append { get; }
+        T Unit { get; }
+        T Append(T left, T right);
     }
 
-    public static class Monoid
+    public struct MinMonoid_Int32 : IMonoid<int>
     {
-        public static Monoid<T> Create<T>(T unit, Func<T, T, T> append) => new Monoid<T>(unit, append);
+        public int Unit => int.MaxValue;
+        public int Append(int left, int right) => Min(left, right);
+    }
 
-        public static readonly Monoid<int> Min_Int32 = new Monoid<int>(int.MaxValue, Min);
-        public static readonly Monoid<int> Max_Int32 = new Monoid<int>(int.MinValue, Max);
+    public struct MaxMonoid_Int32 : IMonoid<int>
+    {
+        public int Unit => int.MinValue;
+        public int Append(int left, int right) => Max(left, right);
+    }
 
-        public static readonly Monoid<long> Min_Int64 = new Monoid<long>(long.MaxValue, Min);
-        public static readonly Monoid<long> Max_Int64 = new Monoid<long>(long.MinValue, Max);
+    public struct MinMonoid_Int64 : IMonoid<long>
+    {
+        public long Unit => long.MaxValue;
+        public long Append(long left, long right) => Min(left, right);
+    }
+
+    public struct MaxMonoid_Int64 : IMonoid<long>
+    {
+        public long Unit => long.MinValue;
+        public long Append(long left, long right) => Max(left, right);
     }
 }
