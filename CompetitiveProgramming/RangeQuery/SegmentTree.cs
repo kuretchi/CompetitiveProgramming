@@ -23,7 +23,7 @@ namespace CompetitiveProgramming.RangeQuery
             this.Length = length;
         }
 
-        public SegmentTree(IList<T> collection)
+        public SegmentTree(IReadOnlyList<T> collection)
         {
             if (collection.Count > (int.MaxValue >> 1) + 1) throw new ArgumentException();
             _size = 1;
