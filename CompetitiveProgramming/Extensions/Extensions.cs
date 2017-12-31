@@ -17,6 +17,12 @@ namespace CompetitiveProgramming.Extensions
 
         public static string AsString(this IEnumerable<char> source) => new string(source.ToArray());
 
+        public static void Exit(int exitCode)
+        {
+            Console.Out.Flush();
+            Environment.Exit(exitCode);
+        }
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void ForEach<T>(this IEnumerable<T> source, Action<T> action)
         {
