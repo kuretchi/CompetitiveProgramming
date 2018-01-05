@@ -75,19 +75,9 @@ namespace CompetitiveProgramming.Extensions
             for (var i = 0; i < count; i++) action(i);
         }
 
-        public static IEnumerable<T> Repeat<T>(Func<T> func)
-        {
-            for (var i = 0; ; i++) yield return func();
-        }
-
         public static IEnumerable<T> Repeat<T>(int count, Func<T> func)
         {
             for (var i = 0; i < count; i++) yield return func();
-        }
-
-        public static IEnumerable<T> Repeat<T>(Func<int, T> func)
-        {
-            for (var i = 0; ; i++) yield return func(i);
         }
 
         public static IEnumerable<T> Repeat<T>(int count, Func<int, T> func)
