@@ -14,12 +14,12 @@
 
 - 素集合データ構造 [[UnionFind.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Collections/UnionFind.cs)]
 
-#### 区間クエリ [[RangeQuery](https://github.com/kuretchi/CompetitiveProgramming/tree/master/CompetitiveProgramming/RangeQuery)]
+#### 区間クエリ [[RangeQuery](https://github.com/kuretchi/CompetitiveProgramming/tree/master/CompetitiveProgramming/Collections/RangeQuery)]
 
-- Fenwick Tree (Binary Indexed Tree) [[FenwickTree.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/RangeQuery/FenwickTree.cs)]
-- いもす法 [[Imos.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/RangeQuery/Imos.cs)]
-- 2次元いもす法 [[Imos2D.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/RangeQuery/Imos2D.cs)]
-- Segment Tree [[SegmentTree.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/RangeQuery/SegmentTree.cs)]
+- Fenwick Tree (Binary Indexed Tree) [[FenwickTree.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Collections/RangeQuery/FenwickTree.cs)]
+- いもす法 [[Imos.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Collections/RangeQuery/Imos.cs)]
+- 2次元いもす法 [[Imos2D.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Collections/RangeQuery/Imos2D.cs)]
+- Segment Tree [[SegmentTree.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Collections/RangeQuery/SegmentTree.cs)]
 
 ### グラフ [[Graphs](https://github.com/kuretchi/CompetitiveProgramming/tree/master/CompetitiveProgramming/Graphs)]
 
