@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CompetitiveProgramming.Extensions;
 
-namespace CompetitiveProgramming.RangeQuery
+namespace CompetitiveProgramming.Collections.RangeQuery
 {
     public class SegmentTree<T, TMonoid> : IReadOnlyList<T> where TMonoid : struct, IMonoid<T>
     {
