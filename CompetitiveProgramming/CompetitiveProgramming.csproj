@@ -58,6 +58,8 @@
     <Compile Include="Graphs\WarshallFloyd.cs" />
     <Compile Include="Math\BigRational.cs" />
     <Compile Include="Math\MathExtensions.cs" />
+    <Compile Include="Math\Eratosthenes.cs" />
+    <Compile Include="Math\ModInt32.cs" />
     <Compile Include="Others\Parser.cs" />
     <Compile Include="Others\Scanner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
