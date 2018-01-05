@@ -64,14 +64,6 @@ namespace CompetitiveProgramming.Extensions
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static T Iterate<T>(int count, T seed, Func<T, T> func)
-        {
-            var r = seed;
-            for (var i = 0; i < count; i++) r = func(r);
-            return r;
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void Repeat(int count, Action action)
         {
             for (var i = 0; i < count; i++) action();
