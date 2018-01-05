@@ -17,6 +17,20 @@ namespace CompetitiveProgramming.Extensions
 
         public static string AsString(this IEnumerable<char> source) => new string(source.ToArray());
 
+        public static Dictionary<T, int> Bucket<T>(this IEnumerable<T> source) where T : IEquatable<T>
+        {
+            var dict = new Dictionary<T, int>();
+            foreach (var item in source) if (dict.ContainsKey(item)) dict[item]++; else dict[item] = 1;
+            return dict;
+        }
+
+        public static int[] Bucket<T>(this IEnumerable<T> source, int maxValue, Func<T, int> selector)
+        {
+            var arr = new int[maxValue + 1];
+            foreach (var item in source) arr[selector(item)]++;
+            return arr;
+        }
+
         public static void Exit(int exitCode)
         {
             Console.Out.Flush();
