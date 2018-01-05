@@ -29,6 +29,7 @@
 ### 数学 [[Math](https://github.com/kuretchi/CompetitiveProgramming/tree/master/CompetitiveProgramming/Math)]
 
 - 多倍長有理数 [[BigRational.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Math/BigRational.cs)]
+- 素数列挙 (エラトステネスの篩) [[Eratosthenes.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Math/Eratosthenes.cs)]
 - (色々 [[MathExtensions.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Math/MathExtensions.cs)])
   - GCD (Gcd)
   - LCM (Lcm)
