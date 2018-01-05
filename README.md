@@ -28,6 +28,7 @@
   - —^‚¦‚ç‚ê‚½”ñ•‰®”‚ğ’´‚¦‚È‚¢Å‘å‚Ì 2 ‚×‚« (HighestOneBit)
   - —İæ (Pow)
   - ŠKæ (Fact)
+- ’è”‚Åí‚Éè—]‚ğæ‚Á‚½” [[ModInt32.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Math/ModInt32.cs)]
 
 ### ‹æŠÔƒNƒGƒŠ [[RangeQuery](https://github.com/kuretchi/CompetitiveProgramming/tree/master/CompetitiveProgramming/RangeQuery)]
 
