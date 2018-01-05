@@ -63,10 +63,10 @@
     <Compile Include="Others\Parser.cs" />
     <Compile Include="Others\Scanner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RangeQuery\FenwickTree.cs" />
-    <Compile Include="RangeQuery\Imos.cs" />
-    <Compile Include="RangeQuery\Imos2D.cs" />
-    <Compile Include="RangeQuery\SegmentTree.cs" />
+    <Compile Include="Collections\RangeQuery\FenwickTree.cs" />
+    <Compile Include="Collections\RangeQuery\Imos.cs" />
+    <Compile Include="Collections\RangeQuery\Imos2D.cs" />
+    <Compile Include="Collections\RangeQuery\SegmentTree.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

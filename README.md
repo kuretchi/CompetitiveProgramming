@@ -14,6 +14,13 @@
 
 - 素集合データ構造 [[UnionFind.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Collections/UnionFind.cs)]
 
+#### 区間クエリ [[RangeQuery](https://github.com/kuretchi/CompetitiveProgramming/tree/master/CompetitiveProgramming/RangeQuery)]
+
+- Fenwick Tree (Binary Indexed Tree) [[FenwickTree.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/RangeQuery/FenwickTree.cs)]
+- いもす法 [[Imos.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/RangeQuery/Imos.cs)]
+- 2次元いもす法 [[Imos2D.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/RangeQuery/Imos2D.cs)]
+- Segment Tree [[SegmentTree.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/RangeQuery/SegmentTree.cs)]
+
 ### グラフ [[Graphs](https://github.com/kuretchi/CompetitiveProgramming/tree/master/CompetitiveProgramming/Graphs)]
 
 - 隣接行列 [[AdjacencyMatrix.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Graphs/AdjacencyMatrix.cs)]
@@ -29,13 +36,6 @@
   - 累乗 (Pow)
   - 階乗 (Fact)
 - 定数で常に剰余を取った数 [[ModInt32.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Math/ModInt32.cs)]
-
-### 区間クエリ [[RangeQuery](https://github.com/kuretchi/CompetitiveProgramming/tree/master/CompetitiveProgramming/RangeQuery)]
-
-- Fenwick Tree (Binary Indexed Tree) [[FenwickTree.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/RangeQuery/FenwickTree.cs)]
-- いもす法 [[Imos.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/RangeQuery/Imos.cs)]
-- 2次元いもす法 [[Imos2D.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/RangeQuery/Imos2D.cs)]
-- Segment Tree [[SegmentTree.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/RangeQuery/SegmentTree.cs)]
 
 ### 拡張 [[Extensions](https://github.com/kuretchi/CompetitiveProgramming/tree/master/CompetitiveProgramming/Extensions)]
 
