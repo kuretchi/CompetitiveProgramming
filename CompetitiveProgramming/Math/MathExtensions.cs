@@ -9,6 +9,12 @@ namespace CompetitiveProgramming.Math
 {
     public static class MathExtensions
     {
+        public static int DivCeil(int left, int right)
+            => left / right + (left % right == 0 ? 0 : 1);
+
+        public static long DivCeil(long left, long right)
+            => left / right + (left % right == 0L ? 0L : 1L);
+
         public static int Gcd(int left, int right)
         {
             int r;

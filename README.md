@@ -31,6 +31,7 @@
 - 多倍長有理数 [[BigRational.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Math/BigRational.cs)]
 - 素数列挙 (エラトステネスの篩) [[Eratosthenes.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Math/Eratosthenes.cs)]
 - (色々 [[MathExtensions.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Math/MathExtensions.cs)])
+  - 切り上げ除算 (DivCeil)
   - GCD (Gcd)
   - LCM (Lcm)
   - 与えられた非負整数を超えない最大の 2 べき (HighestOneBit)
