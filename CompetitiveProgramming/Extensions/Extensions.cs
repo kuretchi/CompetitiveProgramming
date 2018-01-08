@@ -31,6 +31,18 @@ namespace CompetitiveProgramming.Extensions
             return arr;
         }
 
+        public static IEnumerable<int> CumSum(this IEnumerable<int> source)
+        {
+            var sum = 0;
+            foreach (var item in source) yield return sum += item;
+        }
+
+        public static IEnumerable<long> CumSum(this IEnumerable<long> source)
+        {
+            var sum = 0L;
+            foreach (var item in source) yield return sum += item;
+        }
+
         public static void Exit(int exitCode)
         {
             Console.Out.Flush();
