@@ -33,7 +33,10 @@ namespace CompetitiveProgramming.Algorithms
         }
 
         public static int LowerBound(Predicate<int> predicate, int minValue, int maxValue)
-            => Search(predicate, maxValue, minValue - 1, out var i) ? i : i + 1;
+        {
+            int i;
+            return Search(predicate, maxValue, minValue - 1, out i) ? i : i + 1;
+        }
 
         // value < source[source.UpperBound(value)]
         // Example:
@@ -60,7 +63,10 @@ namespace CompetitiveProgramming.Algorithms
         }
 
         public static int UpperBound(Predicate<int> predicate, int minValue, int maxValue)
-            => Search(predicate, minValue, maxValue + 1, out var i) ? i : i - 1;
+        {
+            int i;
+            return Search(predicate, minValue, maxValue + 1, out i) ? i : i - 1;
+        }
 
         private static bool Search(Predicate<int> predicate, int ok, int ng, out int i)
         {

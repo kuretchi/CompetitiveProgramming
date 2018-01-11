@@ -41,7 +41,7 @@ namespace CompetitiveProgramming.Collections.RangeQuery
 
         public T this[int i]
         {
-            get => _tree[i + _size];
+            get { return _tree[i + _size]; }
             set
             {
                 _tree[i += _size] = value;

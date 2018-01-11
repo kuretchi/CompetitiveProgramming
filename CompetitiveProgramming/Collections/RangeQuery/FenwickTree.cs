@@ -59,8 +59,8 @@ namespace CompetitiveProgramming.Collections.RangeQuery
 
         public T this[int i]
         {
-            get => this[i, i];
-            set => this.Append(i, _group.Append(value, _group.Invert(this[i])));
+            get { return this[i, i]; }
+            set { this.Append(i, _group.Append(value, _group.Invert(this[i]))); }
         }
 
         public T this[int l, int r]

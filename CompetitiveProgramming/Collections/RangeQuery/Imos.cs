@@ -26,7 +26,14 @@ namespace CompetitiveProgramming.Collections.RangeQuery
 
         int IReadOnlyCollection<T>.Count => this.Length;
 
-        public T this[int i] => this.Degree < 0 ? throw new InvalidOperationException() : _array[i];
+        public T this[int i]
+        {
+            get
+            {
+                if (this.Degree < 0) throw new InvalidOperationException();
+                return _array[i];
+            }
+        }
 
         public IEnumerator<T> GetEnumerator()
         {

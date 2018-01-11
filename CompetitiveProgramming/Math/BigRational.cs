@@ -111,7 +111,7 @@ namespace CompetitiveProgramming.Math
         }
 
         public override bool Equals(object obj)
-            => obj is BigRational other ? this.Equals(other) : false;
+            => obj is BigRational ? this.Equals((BigRational)obj) : false;
 
         public override int GetHashCode()
             => this.Numer.GetHashCode() ^ this.Denom.GetHashCode();

@@ -27,8 +27,8 @@ namespace CompetitiveProgramming.Graphs
 
         public T this[int source, int target]
         {
-            get => _matrix[source][target];
-            set => _matrix[source][target] = _min.Append(_matrix[source][target], value);
+            get { return _matrix[source][target]; }
+            set { _matrix[source][target] = _min.Append(_matrix[source][target], value); }
         }
 
         public T[][] ToArray() => _matrix;

@@ -27,7 +27,13 @@ namespace CompetitiveProgramming.Collections.RangeQuery
         public int Width => _array[0].Length;
 
         public T this[int h, int w]
-            => this.Degree < 0 ? throw new InvalidOperationException() : _array[h][w];
+        {
+            get
+            {
+                if (this.Degree < 0) throw new InvalidOperationException();
+                return _array[h][w];
+            }
+        }
 
         public void Append(int h1, int w1, T value)
         {

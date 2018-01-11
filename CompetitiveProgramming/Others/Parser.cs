@@ -41,7 +41,8 @@ namespace CompetitiveProgramming.Others
         public static T Parse<T>(this Parser<T> parser, string s)
         {
             var result = parser(new Input(s, 0));
-            return result.Succeeded ? result.Value : throw new InvalidOperationException("Parse failed.");
+            if (result.Succeeded) return result.Value;
+            else throw new InvalidOperationException("Parse failed.");
         }
 
         public static Parser<T2> Select<T1, T2>(this Parser<T1> parser, Func<T1, T2> selector) => input =>
