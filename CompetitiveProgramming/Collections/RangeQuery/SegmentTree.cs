@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,8 +8,9 @@ using CompetitiveProgramming.Extensions;
 
 namespace CompetitiveProgramming.Collections.RangeQuery
 {
-    public class SegmentTree<T, TMonoid> : IReadOnlyList<T> where TMonoid : struct, IMonoid<T>
+    public class SegmentTree<T, TMonoid> where TMonoid : struct, IMonoid<T>
     {
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private static readonly TMonoid _monoid = default(TMonoid);
         private readonly T[] _tree;
         private readonly int _size;
@@ -38,8 +39,6 @@ namespace CompetitiveProgramming.Collections.RangeQuery
 
         public int Length { get; }
 
-        int IReadOnlyCollection<T>.Count => this.Length;
-
         public T this[int i]
         {
             get => _tree[i + _size];
@@ -66,11 +65,11 @@ namespace CompetitiveProgramming.Collections.RangeQuery
             }
         }
 
-        public IEnumerator<T> GetEnumerator()
+        // for debug
+        [DebuggerBrowsable(DebuggerBrowsableState.RootHidden)]
+        internal IEnumerable<T> Values
         {
-            for (var i = 0; i < this.Length; i++) yield return this[i];
+            get { for (var i = 0; i < this.Length; i++) yield return this[i]; }
         }
-
-        IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
     }
 }

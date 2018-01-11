@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -110,7 +109,7 @@ namespace CompetitiveProgramming.Collections.RangeQuery
 
         // for debug
         [DebuggerBrowsable(DebuggerBrowsableState.RootHidden)]
-        public IEnumerable<T> Nodes
+        internal IEnumerable<T> Values
         {
             get { for (var i = 0; i < this.Length; i++) yield return this[i].Concat(); }
         }

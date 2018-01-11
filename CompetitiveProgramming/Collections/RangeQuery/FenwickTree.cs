@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,9 +8,10 @@ using CompetitiveProgramming.Extensions;
 
 namespace CompetitiveProgramming.Collections.RangeQuery
 {
-    public class FenwickTreeOnMonoid<T, TMonoid> : IEnumerable<T>
+    public class FenwickTreeOnMonoid<T, TMonoid>
         where TMonoid : struct, IMonoid<T> // commutative
     {
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private static readonly TMonoid _monoid = default(TMonoid);
         protected readonly T[] _tree;
 
@@ -33,13 +34,6 @@ namespace CompetitiveProgramming.Collections.RangeQuery
 
         public int Length => _tree.Length - 1;
 
-        public IEnumerator<T> GetEnumerator()
-        {
-            for (var i = 0; i < this.Length; i++) yield return Concat(i);
-        }
-
-        IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
-
         public T Concat(int l)
         {
             var acc = _monoid.Unit;
@@ -53,16 +47,15 @@ namespace CompetitiveProgramming.Collections.RangeQuery
         }
     }
 
-    public class FenwickTree<T, TGroup> : FenwickTreeOnMonoid<T, TGroup>, IReadOnlyList<T>
+    public class FenwickTree<T, TGroup> : FenwickTreeOnMonoid<T, TGroup>
         where TGroup : struct, IGroup<T> // commutative
     {
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private static readonly TGroup _group = default(TGroup);
 
         public FenwickTree(int length) : base(length) { }
 
         public FenwickTree(IEnumerable<T> collection) : base(collection) { }
-
-        int IReadOnlyCollection<T>.Count => this.Length;
 
         public T this[int i]
         {
@@ -80,6 +73,13 @@ namespace CompetitiveProgramming.Collections.RangeQuery
                 for (; l > r; l -= l & -l) acc = _group.Append(acc, _group.Invert(_tree[l]));
                 return acc;
             }
+        }
+
+        // for debug
+        [DebuggerBrowsable(DebuggerBrowsableState.RootHidden)]
+        internal IEnumerable<T> Values
+        {
+            get { for (var i = 0; i < this.Length; i++) yield return this[i]; }
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ namespace CompetitiveProgramming.Collections.RangeQuery
 {
     public class Imos2DOnMonoid<T, TMonoid> where TMonoid : struct, IMonoid<T>
     {
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private static readonly TMonoid _monoid = default(TMonoid);
         protected readonly T[][] _array;
 
@@ -46,6 +48,7 @@ namespace CompetitiveProgramming.Collections.RangeQuery
 
     public class Imos2D<T, TGroup> : Imos2DOnMonoid<T, TGroup> where TGroup : struct, IGroup<T>
     {
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private static readonly TGroup _group = default(TGroup);
 
         public Imos2D(int height, int width) : base(height, width) { }
