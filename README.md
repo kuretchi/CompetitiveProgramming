@@ -52,7 +52,3 @@
 - パーサコンビネータ [[Parser.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Others/Parser.cs)]
 - テキストスキャナ (?) [[Scanner.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Others/Scanner.cs)]
   - 競技プログラミングでよくある入力を高速パースするやつ
-
-## License
-
-特に記述がない部分はすべて [WTFPL](https://github.com/kuretchi/CompetitiveProgramming/blob/master/LICENSE.txt) です。
