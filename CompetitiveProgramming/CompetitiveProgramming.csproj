@@ -50,7 +50,9 @@
     <Compile Include="Algorithms\BinarySearch.cs" />
     <Compile Include="Algorithms\CoordinateCompressor.cs" />
     <Compile Include="Algorithms\Xorshift32.cs" />
+    <Compile Include="Collections\RangeQuery\LazySegmentTree.cs" />
     <Compile Include="Collections\UnionFind.cs" />
+    <Compile Include="Extensions\BinaryOperator.cs" />
     <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="Extensions\Group.cs" />
     <Compile Include="Extensions\Monoid.cs" />

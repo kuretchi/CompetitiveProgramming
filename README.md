@@ -19,6 +19,7 @@
 - Fenwick Tree (Binary Indexed Tree) [[FenwickTree.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Collections/RangeQuery/FenwickTree.cs)]
 - Ç¢Ç‡Ç∑ñ@ [[Imos.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Collections/RangeQuery/Imos.cs)]
 - 2éüå≥Ç¢Ç‡Ç∑ñ@ [[Imos2D.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Collections/RangeQuery/Imos2D.cs)]
+- íxâÑì`îd Segment Tree [[LazySegmentTree.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Collections/RangeQuery/LazySegmentTree.cs)]
 - Segment Tree [[SegmentTree.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Collections/RangeQuery/SegmentTree.cs)]
 
 ### ÉOÉâÉt [[Graphs](https://github.com/kuretchi/CompetitiveProgramming/tree/master/CompetitiveProgramming/Graphs)]
@@ -41,6 +42,7 @@
 
 ### ägí£ [[Extensions](https://github.com/kuretchi/CompetitiveProgramming/tree/master/CompetitiveProgramming/Extensions)]
 
+- ìÒçÄââéZ [[BinaryOperator.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Extensions/BinaryOperator.cs)]
 - (êFÅX [[Extensions.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Extensions/Extensions.cs)])
 - åQ [[Group.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Extensions/Group.cs)]
 - ÉÇÉmÉCÉh [[Monoid.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Extensions/Monoid.cs)]
