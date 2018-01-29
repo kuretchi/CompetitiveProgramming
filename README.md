@@ -43,6 +43,7 @@
 ### Šg’£ [[Extensions](https://github.com/kuretchi/CompetitiveProgramming/tree/master/CompetitiveProgramming/Extensions)]
 
 - “ñ€‰‰Z [[BinaryOperator.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Extensions/BinaryOperator.cs)]
+- ‚æ‚­g‚¤’è” [[Constants.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Extensions/Constants.cs)]
 - (FX [[Extensions.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Extensions/Extensions.cs)])
 - ŒQ [[Group.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Extensions/Group.cs)]
 - ƒ‚ƒmƒCƒh [[Monoid.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Extensions/Monoid.cs)]
