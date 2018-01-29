@@ -8,6 +8,12 @@ namespace CompetitiveProgramming.Extensions
 {
     public static class Extensions
     {
+        public static void Answer(object value)
+        {
+            Console.WriteLine(value);
+            Exit(0);
+        }
+
         public static void Assert(bool condition)
         {
             if (!condition) throw new Exception("Assertion failed");
