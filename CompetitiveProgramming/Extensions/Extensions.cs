@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,7 +8,6 @@ namespace CompetitiveProgramming.Extensions
 {
     public static class Extensions
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void Assert(bool condition)
         {
             if (!condition) throw new Exception("Assertion failed");
@@ -49,39 +47,33 @@ namespace CompetitiveProgramming.Extensions
             Environment.Exit(exitCode);
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void ForEach<T>(this IEnumerable<T> source, Action<T> action)
         {
             foreach (var item in source) action(item);
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void ForEach<T, _>(this IEnumerable<T> source, Func<T, _> func)
         {
             foreach (var item in source) func(item);
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void ForEach<T>(this IEnumerable<T> source, Action<T, int> action)
         {
             var i = 0;
             foreach (var item in source) action(item, i++);
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void ForEach<T, _>(this IEnumerable<T> source, Func<T, int, _> func)
         {
             var i = 0;
             foreach (var item in source) func(item, i++);
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void Repeat(int count, Action action)
         {
             for (var i = 0; i < count; i++) action();
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void Repeat(int count, Action<int> action)
         {
             for (var i = 0; i < count; i++) action(i);
