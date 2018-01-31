@@ -12,6 +12,7 @@
 
 ### データ構造 [[Collections](https://github.com/kuretchi/CompetitiveProgramming/tree/master/CompetitiveProgramming/Collections)]
 
+- 二分ヒープ [[BinaryHeap.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Collections/BinaryHeap.cs)]
 - 優先度付きキュー [[IPriorityQueue.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Collections/IPriorityQueue.cs)]
 - 素集合データ構造 [[UnionFind.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Collections/UnionFind.cs)]
 
