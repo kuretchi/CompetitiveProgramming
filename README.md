@@ -54,5 +54,5 @@
 ### その他 [[Others](https://github.com/kuretchi/CompetitiveProgramming/tree/master/CompetitiveProgramming/Others)]
 
 - パーサコンビネータ [[Parser.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Others/Parser.cs)]
-- テキストスキャナ (?) [[Scanner.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Others/Scanner.cs)]
-  - 競技プログラミングでよくある入力を高速パースするやつ
+- スキャナ (高速版) [[StreamScanner.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Others/StreamScanner.cs)]
+- スキャナ [[TextScanner.cs](https://github.com/kuretchi/CompetitiveProgramming/blob/master/CompetitiveProgramming/Others/TextScanner.cs)]
