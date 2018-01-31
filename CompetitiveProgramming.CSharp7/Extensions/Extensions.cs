@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,99 +8,6 @@ namespace CompetitiveProgramming.CSharp7.Extensions
 {
     public static class Extensions
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void Assert(bool condition)
-        {
-            if (!condition) throw new Exception("Assertion failed");
-        }
-
-        public static string AsString(this IEnumerable<char> source) => new string(source.ToArray());
-
-        public static Dictionary<T, int> Bucket<T>(this IEnumerable<T> source) where T : IEquatable<T>
-        {
-            var dict = new Dictionary<T, int>();
-            foreach (var item in source) if (dict.ContainsKey(item)) dict[item]++; else dict[item] = 1;
-            return dict;
-        }
-
-        public static int[] Bucket<T>(this IEnumerable<T> source, int maxValue, Func<T, int> selector)
-        {
-            var arr = new int[maxValue + 1];
-            foreach (var item in source) arr[selector(item)]++;
-            return arr;
-        }
-
-        public static IEnumerable<int> CumSum(this IEnumerable<int> source)
-        {
-            var sum = 0;
-            foreach (var item in source) yield return sum += item;
-        }
-
-        public static IEnumerable<long> CumSum(this IEnumerable<long> source)
-        {
-            var sum = 0L;
-            foreach (var item in source) yield return sum += item;
-        }
-
-        public static void Exit(int exitCode)
-        {
-            Console.Out.Flush();
-            Environment.Exit(exitCode);
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void ForEach<T>(this IEnumerable<T> source, Action<T> action)
-        {
-            foreach (var item in source) action(item);
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void ForEach<T, _>(this IEnumerable<T> source, Func<T, _> func)
-        {
-            foreach (var item in source) func(item);
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void ForEach<T>(this IEnumerable<T> source, Action<T, int> action)
-        {
-            var i = 0;
-            foreach (var item in source) action(item, i++);
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void ForEach<T, _>(this IEnumerable<T> source, Func<T, int, _> func)
-        {
-            var i = 0;
-            foreach (var item in source) func(item, i++);
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void Repeat(int count, Action action)
-        {
-            for (var i = 0; i < count; i++) action();
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void Repeat(int count, Action<int> action)
-        {
-            for (var i = 0; i < count; i++) action(i);
-        }
-
-        public static IEnumerable<T> Repeat<T>(int count, Func<T> func)
-        {
-            for (var i = 0; i < count; i++) yield return func();
-        }
-
-        public static IEnumerable<T> Repeat<T>(int count, Func<int, T> func)
-        {
-            for (var i = 0; i < count; i++) yield return func(i);
-        }
-
-        public static void Swap<T>(ref T x, ref T y)
-        {
-            var tmp = x; x = y; y = tmp;
-        }
-
         public static (T1[], T2[]) Unzip<T1, T2>(this ICollection<(T1, T2)> source)
         {
             var ts1 = new T1[source.Count];
