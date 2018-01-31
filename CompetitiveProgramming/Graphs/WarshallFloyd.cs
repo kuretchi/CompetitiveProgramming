@@ -25,6 +25,6 @@ namespace CompetitiveProgramming.Graphs
                         _d[i][j] = _min.Append(_d[i][j], _sum.Append(_d[i][k], _d[k][j]));
         }
 
-        public T this[int source, int target] => _d[source][target];
+        public T GetMinCost(int source, int target) => _d[source][target];
     }
 }
