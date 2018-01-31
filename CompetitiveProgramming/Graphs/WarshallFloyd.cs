@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,11 +18,7 @@ namespace CompetitiveProgramming.Graphs
 
         public WarshallFloyd(AdjacencyMatrix<T, TMinMonoid, TSumMonoid> graph)
         {
-            _d = new T[graph.Length][];
-            var a = graph.ToArray();
-            a.CopyTo(_d, 0);
-            for (var i = 0; i < graph.Length; i++) a[i].CopyTo(_d[i], 0);
-
+            _d = graph.ToArray();
             for (var k = 0; k < graph.Length; k++)
                 for (var i = 0; i < graph.Length; i++)
                     for (var j = 0; j < graph.Length; j++)

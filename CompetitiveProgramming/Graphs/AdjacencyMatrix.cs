@@ -31,6 +31,12 @@ namespace CompetitiveProgramming.Graphs
             set { _matrix[source][target] = _min.Append(_matrix[source][target], value); }
         }
 
-        public T[][] ToArray() => _matrix;
+        public T[][] ToArray()
+        {
+            var array = new T[this.Length][];
+            _matrix.CopyTo(array, 0);
+            for (var i = 0; i < this.Length; i++) _matrix[i].CopyTo(array[i], 0);
+            return array;
+        }
     }
 }
