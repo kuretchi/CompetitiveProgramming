@@ -105,10 +105,7 @@ namespace CompetitiveProgramming.Math
             => (this - other).Numer.CompareTo(0);
 
         public bool Equals(BigRational other)
-        {
-            var r = this / other;
-            return r.Numer == r.Denom;
-        }
+            => this.Numer == other.Numer && this.Denom == other.Denom;
 
         public override bool Equals(object obj)
             => obj is BigRational ? this.Equals((BigRational)obj) : false;
