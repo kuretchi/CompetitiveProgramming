@@ -34,16 +34,16 @@ namespace CompetitiveProgramming.Collections.RangeQuery
 
         public int Length => _tree.Length - 1;
 
-        public T Concat(int l)
+        public T Concat(int r)
         {
             var acc = _monoid.Unit;
-            for (l++; l > 0; l -= l & -l) acc = _monoid.Append(acc, _tree[l]);
+            for (r++; r > 0; r -= r & -r) acc = _monoid.Append(acc, _tree[r]);
             return acc;
         }
 
-        public void Append(int r, T value)
+        public void Append(int i, T value)
         {
-            for (r++; r <= this.Length; r += r & -r) _tree[r] = _monoid.Append(_tree[r], value);
+            for (i++; i <= this.Length; i += i & -i) _tree[i] = _monoid.Append(_tree[i], value);
         }
     }
 
