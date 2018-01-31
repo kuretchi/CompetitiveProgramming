@@ -27,4 +27,12 @@ namespace CompetitiveProgramming.Graphs
 
         public T GetMinCost(int source, int target) => _d[source][target];
     }
+
+    public static class WarshallFloyd
+    {
+        public static WarshallFloyd<T, TMinMonoid, TSumMonoid> Create<T, TMinMonoid, TSumMonoid>(AdjacencyMatrix<T, TMinMonoid, TSumMonoid> graph)
+            where TMinMonoid : struct, IMonoid<T>
+            where TSumMonoid : struct, IMonoid<T>
+            => new WarshallFloyd<T, TMinMonoid, TSumMonoid>(graph);
+    }
 }
