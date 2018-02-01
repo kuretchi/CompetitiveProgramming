@@ -32,6 +32,6 @@ namespace CompetitiveProgramming.Collections
 
         public int CountGroups() => _tree.Count(x => x < 0);
 
-        private int Find(int i) => _tree[i] < 0 ? i : _tree[i] = Find(_tree[i]);
+        public int Find(int i) => _tree[i] < 0 ? i : _tree[i] = Find(_tree[i]);
     }
 }
