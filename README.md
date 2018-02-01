@@ -1,5 +1,7 @@
 # CompetitiveProgramming
 
+[![Build status](https://ci.appveyor.com/api/projects/status/j3fjxx2ncqgewc36)](https://ci.appveyor.com/project/kuretchi/competitiveprogramming)
+
 競技プログラミング用のライブラリです。C# 6.0 で実装されています。
 
 ## Contents
