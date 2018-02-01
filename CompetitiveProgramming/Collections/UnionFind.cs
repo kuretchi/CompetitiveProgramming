@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static CompetitiveProgramming.Extensions.Extensions;
 
 namespace CompetitiveProgramming.Collections
 {
@@ -21,7 +20,7 @@ namespace CompetitiveProgramming.Collections
             i = Find(i);
             j = Find(j);
             if (i == j) return false;
-            if (_tree[i] > _tree[j]) Swap(ref i, ref j);
+            if (_tree[i] > _tree[j]) { var t = i; i = j; j = t; }
             _tree[i] += _tree[j];
             _tree[j] = i;
             return true;

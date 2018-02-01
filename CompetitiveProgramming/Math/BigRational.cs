@@ -4,8 +4,6 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
-using CompetitiveProgramming.Extensions;
-using static CompetitiveProgramming.Math.MathExtensions;
 
 namespace CompetitiveProgramming.Math
 {
@@ -31,7 +29,7 @@ namespace CompetitiveProgramming.Math
         private void Reduce()
         {
             if (this.Numer == 0) { this.Denom = 1; return; }
-            var gcd = Gcd(this.Numer, this.Denom);
+            var gcd = BigInteger.GreatestCommonDivisor(this.Numer, this.Denom);
             this.Numer /= gcd; this.Denom /= gcd;
             if (this.Denom < 0) { this.Numer *= -1; this.Denom *= -1; }
         }
@@ -47,7 +45,7 @@ namespace CompetitiveProgramming.Math
 
         public static BigRational operator +(BigRational left, BigRational right)
         {
-            var d = Lcm(left.Denom, right.Denom);
+            var d = left.Denom / BigInteger.GreatestCommonDivisor(left.Denom, right.Denom) * right.Denom;
             var n = left.Numer * (d / left.Denom) + right.Numer * (d / right.Denom);
             return new BigRational(n, d);
         }

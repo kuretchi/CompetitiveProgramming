@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static System.Math;
 
 namespace CompetitiveProgramming.Algorithms
 {
@@ -70,7 +69,7 @@ namespace CompetitiveProgramming.Algorithms
 
         private static bool Search(Predicate<int> predicate, int ok, int ng, out int i)
         {
-            while (Abs(ok - ng) > 1)
+            while (System.Math.Abs(ok - ng) > 1)
             {
                 var mid = ng + (ok - ng) / 2;
                 if (predicate(mid)) ok = mid;
