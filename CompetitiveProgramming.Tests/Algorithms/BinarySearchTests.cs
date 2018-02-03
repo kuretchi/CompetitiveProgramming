@@ -59,10 +59,10 @@ namespace CompetitiveProgramming.Tests.Algorithms
             }
 
             source.LowerBound(value).Is(lowerBoundIndex);
-            BinarySearch.LowerBound(i => source[i], 0, source.Count, value).Is(lowerBoundIndex);
+            BinarySearch.LowerBound(i => source[i], 0, source.Count - 1, value).Is(lowerBoundIndex);
 
             source.UpperBound(value).Is(upperBoundIndex);
-            BinarySearch.UpperBound(i => source[i], 0, source.Count, value).Is(upperBoundIndex);
+            BinarySearch.UpperBound(i => source[i], 0, source.Count - 1, value).Is(upperBoundIndex);
         }
     }
 }
