@@ -15,5 +15,7 @@ namespace CompetitiveProgramming.Extensions
         public const string NO = "NO";
         public const string Possible = "Possible";
         public const string Impossible = "Impossible";
+        public const string POSSIBLE = "POSSIBLE";
+        public const string IMPOSSIBLE = "IMPOSSIBLE";
     }
 }
