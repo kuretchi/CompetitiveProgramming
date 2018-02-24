@@ -6,15 +6,17 @@ using System.Threading.Tasks;
 
 namespace CompetitiveProgramming.Algorithms
 {
-    public class CoordinateCompressor<T> where T : IComparable<T>, IEquatable<T>
+    public class CoordinateCompressor<T>
     {
         private readonly Dictionary<T, int> _compress;
         private readonly T[] _decompress;
 
-        public CoordinateCompressor(IEnumerable<T> coordinates)
+        public CoordinateCompressor(IEnumerable<T> coordinates) : this(coordinates, Comparer<T>.Default) { }
+
+        public CoordinateCompressor(IEnumerable<T> coordinates, IComparer<T> comparer)
         {
             var arr = coordinates.ToArray();
-            Array.Sort(arr);
+            Array.Sort(arr, comparer);
             _compress = new Dictionary<T, int>(arr.Length);
             _decompress = arr;
             var pi = default(int);
@@ -22,7 +24,7 @@ namespace CompetitiveProgramming.Algorithms
             if (arr.Any()) _compress.Add(arr[0], 0);
 
             for (var i = 0; i < arr.Length; i++)
-                if (i > 0 && !arr[i].Equals(pa)) _compress[pa = arr[i]] = pi = i;
+                if (i > 0 && comparer.Compare(arr[i], pa) != 0) _compress[pa = arr[i]] = pi = i;
         }
 
         public int Compress(T coordinate) => _compress[coordinate];
