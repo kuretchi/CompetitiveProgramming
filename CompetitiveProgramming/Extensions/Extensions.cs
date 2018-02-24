@@ -35,6 +35,10 @@ namespace CompetitiveProgramming.Extensions
             return arr;
         }
 
+        public static IComparer<T> CreateDescendingComparer<T>()
+            where T : IComparable<T>
+            => Comparer<T>.Create((x, y) => y.CompareTo(x));
+
         public static IEnumerable<int> CumSum(this IEnumerable<int> source)
         {
             var sum = 0;
