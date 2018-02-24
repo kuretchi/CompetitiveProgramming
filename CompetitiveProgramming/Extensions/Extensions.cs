@@ -79,6 +79,14 @@ namespace CompetitiveProgramming.Extensions
             foreach (var item in source) func(item, i++);
         }
 
+        // [l, r)
+        public static bool IsIn<T>(this T value, T l, T r)
+            where T : IComparable<T>
+        {
+            if (l.CompareTo(r) > 0) throw new ArgumentException();
+            return l.CompareTo(value) <= 0 && value.CompareTo(r) < 0;
+        }
+
         public static IEnumerable<int> Range(int start, int end, int step = 1)
         {
             for (var i = start; i < end; i += step) yield return i;
