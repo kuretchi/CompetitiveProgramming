@@ -79,6 +79,13 @@ namespace CompetitiveProgramming.Extensions
             foreach (var item in source) func(item, i++);
         }
 
+        public static IEnumerable<int> Range(int start, int end, int step = 1)
+        {
+            for (var i = start; i < end; i += step) yield return i;
+        }
+
+        public static IEnumerable<int> Range(int end) => Range(0, end);
+
         public static void Repeat(int count, Action action)
         {
             for (var i = 0; i < count; i++) action();
