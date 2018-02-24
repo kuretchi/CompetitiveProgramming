@@ -9,11 +9,11 @@ namespace CompetitiveProgramming.Extensions
     public static class Constants
     {
         public const int AnswerToLifeTheUniverseAndEverything = 42;
-        public const string Yes = nameof(Yes);
-        public const string No = nameof(No);
-        public const string YES = nameof(YES);
-        public const string NO = nameof(NO);
-        public const string Possible = nameof(Possible);
-        public const string Impossible = nameof(Impossible);
+        public const string Yes = "Yes";
+        public const string No = "No";
+        public const string YES = "YES";
+        public const string NO = "NO";
+        public const string Possible = "Possible";
+        public const string Impossible = "Impossible";
     }
 }
