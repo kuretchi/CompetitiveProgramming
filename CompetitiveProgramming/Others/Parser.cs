@@ -80,6 +80,22 @@ namespace CompetitiveProgramming.Others
             return Result<IEnumerable<T>>.Success(values, result.Rest);
         };
 
+        public static Parser<IEnumerable<T>> AtLeastOnce<T>(this Parser<T> parser) => input =>
+        {
+            var result = parser(input);
+            if (!result.Succeeded) return Result<IEnumerable<T>>.Failure(input);
+
+            var values = new List<T>();
+            do
+            {
+                values.Add(result.Value);
+                result = parser(result.Rest);
+            }
+            while (result.Succeeded);
+
+            return Result<IEnumerable<T>>.Success(values, result.Rest);
+        };
+
         public static Parser<T> Option<T>(this Parser<T> parser, T @default) => input =>
         {
             var result = parser(input);
