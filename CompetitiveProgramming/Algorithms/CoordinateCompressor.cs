@@ -27,6 +27,8 @@ namespace CompetitiveProgramming.Algorithms
                 if (i > 0 && comparer.Compare(arr[i], pa) != 0) _compress[pa = arr[i]] = pi = i;
         }
 
+        public int Count => _decompress.Length - 1;
+
         public int Compress(T coordinate) => _compress[coordinate];
 
         public T Decompress(int index) => _decompress[index];
