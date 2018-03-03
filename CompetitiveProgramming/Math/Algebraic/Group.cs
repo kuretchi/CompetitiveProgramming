@@ -11,14 +11,17 @@ namespace CompetitiveProgramming.Math.Algebraic
         T Invert(T value);
     }
 
-    public struct SumGroup_Int32 : IGroup<int>
+    // requires Append(x, y) == Append(y, x)
+    public interface ICommutativeGroup<T> : IGroup<T>, ICommutativeMonoid<T> { }
+
+    public struct SumGroup_Int32 : ICommutativeGroup<int>
     {
         public int Unit => 0;
         public int Append(int left, int right) => left + right;
         public int Invert(int value) => -value;
     }
 
-    public struct SumGroup_Int64 : IGroup<long>
+    public struct SumGroup_Int64 : ICommutativeGroup<long>
     {
         public long Unit => 0L;
         public long Append(long left, long right) => left + right;
