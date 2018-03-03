@@ -25,7 +25,7 @@ namespace CompetitiveProgramming.Collections.RangeQuery
         public int Length => _t.Length;
 
         public T Concat(int r)
-            => r == 0 ? _monoid.Unit : _t[r - 1];
+            => r == 0 ? _monoid.Identity : _t[r - 1];
     }
 
     public class CumulativeSum<T, TGroup> : CumulativeSumOnMonoid<T, TGroup>,

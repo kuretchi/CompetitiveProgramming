@@ -21,7 +21,7 @@ namespace CompetitiveProgramming.Collections.RangeQuery
         {
             _degree = degree;
             _append = append;
-            _t = Enumerable.Repeat(_group.Unit, length).ToArray();
+            _t = Enumerable.Repeat(_group.Identity, length).ToArray();
             this.Length = length;
         }
 

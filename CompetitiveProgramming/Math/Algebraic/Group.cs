@@ -16,14 +16,14 @@ namespace CompetitiveProgramming.Math.Algebraic
 
     public struct SumGroup_Int32 : ICommutativeGroup<int>
     {
-        public int Unit => 0;
+        public int Identity => 0;
         public int Append(int left, int right) => left + right;
         public int Invert(int value) => -value;
     }
 
     public struct SumGroup_Int64 : ICommutativeGroup<long>
     {
-        public long Unit => 0L;
+        public long Identity => 0L;
         public long Append(long left, long right) => left + right;
         public long Invert(long value) => -value;
     }

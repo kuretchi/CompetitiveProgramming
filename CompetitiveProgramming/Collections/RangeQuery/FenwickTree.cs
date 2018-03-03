@@ -17,7 +17,7 @@ namespace CompetitiveProgramming.Collections.RangeQuery
 
         public FenwickTreeOnMonoid(int length)
         {
-            _t = Enumerable.Repeat(_monoid.Unit, length + 1).ToArray();
+            _t = Enumerable.Repeat(_monoid.Identity, length + 1).ToArray();
         }
 
         public FenwickTreeOnMonoid(IReadOnlyList<T> collection)
@@ -44,7 +44,7 @@ namespace CompetitiveProgramming.Collections.RangeQuery
         // [0, r)
         public T Concat(int r)
         {
-            var acc = _monoid.Unit;
+            var acc = _monoid.Identity;
             for (; r > 0; r -= r & -r)
                 acc = _monoid.Append(acc, _t[r]);
             return acc;
@@ -70,7 +70,7 @@ namespace CompetitiveProgramming.Collections.RangeQuery
         // [l, r)
         public T Concat(int l, int r)
         {
-            var acc = _group.Unit;
+            var acc = _group.Identity;
             for (; r > l; r -= r & -r)
                 acc = _group.Append(acc, _t[r]);
             for (; l > r; l -= l & -l)

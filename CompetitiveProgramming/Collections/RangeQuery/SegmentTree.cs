@@ -21,7 +21,7 @@ namespace CompetitiveProgramming.Collections.RangeQuery
             if (length < 0 || _maxLength < length) throw new ArgumentOutOfRangeException();
             _size = 1;
             while (_size < length) _size <<= 1;
-            _t = Enumerable.Repeat(_monoid.Unit, _size << 1).ToArray();
+            _t = Enumerable.Repeat(_monoid.Identity, _size << 1).ToArray();
             this.Length = length;
         }
 
@@ -32,7 +32,7 @@ namespace CompetitiveProgramming.Collections.RangeQuery
             while (_size < collection.Count) _size <<= 1;
             _t = new T[_size << 1];
             for (var i = 0; i < _size; i++)
-                _t[i + _size] = i < collection.Count ? collection[i] : _monoid.Unit;
+                _t[i + _size] = i < collection.Count ? collection[i] : _monoid.Identity;
             for (var i = _size - 1; i > 0; i--)
                 _t[i] = _monoid.Append(_t[i << 1], _t[(i << 1) + 1]);
             this.Length = collection.Count;
@@ -60,8 +60,8 @@ namespace CompetitiveProgramming.Collections.RangeQuery
         public T Concat(int l, int r)
         {
             if (l < 0 || r < l || this.Length < r) throw new IndexOutOfRangeException();
-            var lacc = _monoid.Unit;
-            var racc = _monoid.Unit;
+            var lacc = _monoid.Identity;
+            var racc = _monoid.Identity;
             for (l += _size, r += _size; l < r; l >>= 1, r >>= 1)
             {
                 if ((l & 1) != 0) lacc = _monoid.Append(lacc, _t[l++]);
