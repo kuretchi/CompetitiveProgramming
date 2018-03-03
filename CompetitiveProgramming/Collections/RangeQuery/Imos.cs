@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,73 +8,70 @@ using CompetitiveProgramming.Math.Algebraic;
 
 namespace CompetitiveProgramming.Collections.RangeQuery
 {
-    public class ImosOnMonoid<T, TMonoid> : IReadOnlyList<T> where TMonoid : struct, IMonoid<T>
+    public class Imos<T, TGroup> : IReadOnlyCollection<T>,
+        IRangeAppendable<T>, IPointGettable<T>
+        where TGroup : struct, ICommutativeGroup<T>
     {
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private static readonly TMonoid _monoid = default(TMonoid);
-        protected readonly T[] _array;
+        private static readonly TGroup _group = default(TGroup);
+        private readonly Action<int, int, T, Action<int, T>> _append;
+        private readonly int _degree;
+        private readonly T[] _t;
 
-        public ImosOnMonoid(int length)
+        public Imos(int length, int degree, Action<int, int, T, Action<int, T>> append)
         {
-            _array = Enumerable.Repeat(_monoid.Unit, length).ToArray();
+            _degree = degree;
+            _append = append;
+            _t = Enumerable.Repeat(_group.Unit, length).ToArray();
+            this.Length = length;
         }
 
-        public int Degree { get; protected set; } = -1;
+        public int Length { get; }
 
-        public int Length => _array.Length;
+        public bool IsIntegrated { get; protected set; }
 
         int IReadOnlyCollection<T>.Count => this.Length;
 
-        public T this[int i]
+        public T this[int i] => GetAt(i);
+
+        // [l, r) += value
+        public void Append(int l, int r, T value)
         {
-            get
-            {
-                if (this.Degree < 0) throw new InvalidOperationException();
-                return _array[i];
-            }
+            if (this.IsIntegrated) throw new InvalidOperationException();
+            _append(l, r, value, (i, v) => _t[i] = _group.Append(_t[i], v));
         }
 
-        public IEnumerator<T> GetEnumerator()
+        public T GetAt(int i)
         {
-            if (this.Degree < 0) throw new InvalidOperationException();
-            foreach (var value in _array) yield return value;
-        }
-
-        IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
-
-        public void Append(int l, T value)
-        {
-            _array[l] = _monoid.Append(_array[l], value);
+            if (!this.IsIntegrated) throw new InvalidOperationException();
+            return _t[i];
         }
 
         public void Integrate()
         {
-            for (var i = 1; i < _array.Length; i++)
-                _array[i] = _monoid.Append(_array[i - 1], _array[i]);
-            this.Degree++;
-        }
-    }
-
-    public class Imos<T, TGroup> : ImosOnMonoid<T, TGroup>, IReadOnlyList<T> where TGroup : struct, IGroup<T>
-    {
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private static readonly TGroup _group = default(TGroup);
-
-        public Imos(int length) : base(length) { }
-
-        public void Append(int l, int r, T value)
-        {
-            _array[l] = _group.Append(_array[l], value);
-            if (r == _array.Length - 1) return;
-            _array[r + 1] = _group.Append(_array[r + 1], _group.Invert(value));
+            if (this.IsIntegrated) throw new InvalidOperationException();
+            for (var i = 0; i <= _degree; i++)
+                for (var j = 1; j < _t.Length; j++)
+                    _t[j] = _group.Append(_t[j - 1], _t[j]);
+            this.IsIntegrated = true;
         }
 
         public void Differentiate()
         {
-            if (this.Degree < 0) throw new InvalidOperationException();
-            for (var i = _array.Length - 1; i > 0; i--)
-                _array[i] = _group.Append(_array[i], _group.Invert(_array[i - 1]));
-            this.Degree--;
+            if (!this.IsIntegrated) throw new InvalidOperationException();
+            for (var i = 0; i <= _degree; i++)
+                for (var j = _t.Length - 1; j > 0; j--)
+                    _t[j] = _group.Append(_t[j], _group.Invert(_t[j - 1]));
+            this.IsIntegrated = false;
         }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            if (!this.IsIntegrated) throw new InvalidOperationException();
+            for (var i = 0; i < _t.Length; i++)
+                yield return _t[i];
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+            => this.GetEnumerator();
     }
 }

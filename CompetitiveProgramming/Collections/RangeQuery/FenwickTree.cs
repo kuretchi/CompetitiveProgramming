@@ -8,78 +8,80 @@ using CompetitiveProgramming.Math.Algebraic;
 
 namespace CompetitiveProgramming.Collections.RangeQuery
 {
-    public class FenwickTreeOnMonoid<T, TMonoid>
-        where TMonoid : struct, IMonoid<T> // commutative
+    public class FenwickTreeOnMonoid<T, TMonoid> :
+        IPrefixRangeConcatable<T>, IPointAppendable<T>
+        where TMonoid : struct, ICommutativeMonoid<T>
     {
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private static readonly TMonoid _monoid = default(TMonoid);
-        protected readonly T[] _tree;
+        protected readonly T[] _t;
 
         public FenwickTreeOnMonoid(int length)
         {
-            _tree = Enumerable.Repeat(_monoid.Unit, length + 1).ToArray();
+            _t = Enumerable.Repeat(_monoid.Unit, length + 1).ToArray();
         }
 
         public FenwickTreeOnMonoid(IReadOnlyList<T> collection)
         {
             var count = collection.Count;
-            _tree = new T[count + 1];
-            for (var i = 0; i < count; i++) _tree[i + 1] = collection[i];
+            _t = new T[count + 1];
+            for (var i = 0; i < count; i++)
+                _t[i + 1] = collection[i];
             for (var i = 1; i < count; i++)
             {
                 var j = i + (i & -i);
-                if (j < count + 1) _tree[j] = _monoid.Append(_tree[j], _tree[i]);
+                if (j < count + 1) _t[j] = _monoid.Append(_t[j], _t[i]);
             }
         }
 
-        public int Length => _tree.Length - 1;
+        public int Length => _t.Length - 1;
 
+        public void AppendAt(int i, T value)
+        {
+            for (i++; i <= this.Length; i += i & -i)
+                _t[i] = _monoid.Append(_t[i], value);
+        }
+
+        // [0, r)
         public T Concat(int r)
         {
             var acc = _monoid.Unit;
-            for (r++; r > 0; r -= r & -r) acc = _monoid.Append(acc, _tree[r]);
+            for (; r > 0; r -= r & -r)
+                acc = _monoid.Append(acc, _t[r]);
             return acc;
-        }
-
-        public void Append(int i, T value)
-        {
-            for (i++; i <= this.Length; i += i & -i) _tree[i] = _monoid.Append(_tree[i], value);
         }
     }
 
-    public class FenwickTree<T, TGroup> : FenwickTreeOnMonoid<T, TGroup>
-        where TGroup : struct, IGroup<T> // commutative
+    public partial class FenwickTree<T, TGroup> : FenwickTreeOnMonoid<T, TGroup>,
+        IRangeConcatable<T>, IPointGettable<T>, IPointSettable<T>
+        where TGroup : struct, ICommutativeGroup<T>
     {
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private static readonly TGroup _group = default(TGroup);
 
         public FenwickTree(int length) : base(length) { }
 
         public FenwickTree(IReadOnlyList<T> collection) : base(collection) { }
 
-        public T this[int i]
-        {
-            get { return this[i, i]; }
-            set { this.Append(i, _group.Append(value, _group.Invert(this[i]))); }
-        }
+        public T GetAt(int i)
+            => Concat(i, i + 1);
 
-        public T this[int l, int r]
+        public void SetAt(int i, T value)
+            => this.AppendAt(i, _group.Append(value, _group.Invert(this.GetAt(i))));
+
+        // [l, r)
+        public T Concat(int l, int r)
         {
-            get
-            {
-                var acc = _group.Unit;
-                r++;
-                for (; r > l; r -= r & -r) acc = _group.Append(acc, _tree[r]);
-                for (; l > r; l -= l & -l) acc = _group.Append(acc, _group.Invert(_tree[l]));
-                return acc;
-            }
+            var acc = _group.Unit;
+            for (; r > l; r -= r & -r)
+                acc = _group.Append(acc, _t[r]);
+            for (; l > r; l -= l & -l)
+                acc = _group.Append(acc, _group.Invert(_t[l]));
+            return acc;
         }
 
         // for debug
-        [DebuggerBrowsable(DebuggerBrowsableState.RootHidden)]
         internal IEnumerable<T> Values
         {
-            get { for (var i = 0; i < this.Length; i++) yield return this[i]; }
+            get { for (var i = 0; i < this.Length; i++) yield return this.GetAt(i); }
         }
     }
 }
