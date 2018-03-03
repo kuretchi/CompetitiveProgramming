@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -113,6 +114,13 @@ namespace CompetitiveProgramming.Extensions
         {
             for (var i = 0; i < count; i++) yield return func(i);
         }
+
+        public static IEnumerable<int> RangeReverse(int start, int end, int step = 1)
+        {
+            for (var i = end - 1; i >= start; i -= step) yield return i;
+        }
+
+        public static IEnumerable<int> RangeReverse(int end) => RangeReverse(0, end);
 
         public static void Swap<T>(ref T x, ref T y)
         {
