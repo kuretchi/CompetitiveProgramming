@@ -12,6 +12,10 @@ namespace CompetitiveProgramming.Math
 
         public const int Mod = (int)1e9 + 7;
 
+        public static readonly ModInt32 Zero = new ModInt32(0);
+
+        public static readonly ModInt32 One = new ModInt32(1);
+
         public ModInt32(long value) { _value = value % Mod; }
 
         private ModInt32(int value) { _value = value; }
