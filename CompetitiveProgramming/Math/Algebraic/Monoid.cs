@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Math;
 
-namespace CompetitiveProgramming.Extensions
+namespace CompetitiveProgramming.Math.Algebraic
 {
     public interface IMonoid<T>
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CompetitiveProgramming.Extensions
+namespace CompetitiveProgramming.Math.Algebraic
 {
     public interface IGroup<T> : IMonoid<T>
     {
