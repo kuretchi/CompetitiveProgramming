@@ -30,7 +30,7 @@ namespace CompetitiveProgramming.Collections.RangeQuery
 
     public class CumulativeSum<T, TGroup> : CumulativeSumOnMonoid<T, TGroup>,
         IRangeConcatable<T>
-        where TGroup : struct, IGroup<T>
+        where TGroup : struct, ICommutativeGroup<T>
     {
         private static readonly TGroup _group = default(TGroup);
 
