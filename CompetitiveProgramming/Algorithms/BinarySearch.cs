@@ -83,7 +83,7 @@ namespace CompetitiveProgramming.Algorithms
             return comparer.Compare(func(i), value) <= 0 ? i + 1 : i;
         }
 
-        public static int Search(Predicate<int> predicate, int minValue, int maxValue)
+        public static int Search(Func<int, bool> predicate, int minValue, int maxValue)
         {
             var ok = maxValue;
             var ng = minValue - 1;
@@ -98,7 +98,7 @@ namespace CompetitiveProgramming.Algorithms
             return ok;
         }
 
-        public static long Search(Predicate<long> predicate, long minValue, long maxValue)
+        public static long Search(Func<long, bool> predicate, long minValue, long maxValue)
         {
             var ok = maxValue;
             var ng = minValue - 1;
@@ -113,7 +113,7 @@ namespace CompetitiveProgramming.Algorithms
             return ok;
         }
 
-        public static BigInteger Search(Predicate<BigInteger> predicate, BigInteger minValue, BigInteger maxValue)
+        public static BigInteger Search(Func<BigInteger, bool> predicate, BigInteger minValue, BigInteger maxValue)
         {
             var ok = maxValue;
             var ng = minValue - 1;

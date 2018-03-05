@@ -151,7 +151,7 @@ namespace CompetitiveProgramming.Others
 
         public static Parser<T> Return<T>(T value) => input => Result<T>.Success(value, input);
 
-        public static Parser<char> Char(Predicate<char> predicate) => input =>
+        public static Parser<char> Char(Func<char, bool> predicate) => input =>
         {
             if (input.Index >= input.Text.Length) return Result<char>.Failure(input);
             var c = input.Text[input.Index];
@@ -165,7 +165,7 @@ namespace CompetitiveProgramming.Others
         public static Parser<string> String(string s)
             => s.Select(Char).Concat().Select(x => new string(x.ToArray()));
 
-        public static Parser<T> Integer<T>(Converter<string, T> converter)
+        public static Parser<T> Integer<T>(Func<string, T> converter)
             => from minus in String("-").Option("")
                from digits in Char(char.IsDigit).Many().AsString()
                select converter(minus + digits);
