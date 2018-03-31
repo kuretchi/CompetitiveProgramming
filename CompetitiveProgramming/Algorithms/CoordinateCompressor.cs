@@ -19,12 +19,12 @@ namespace CompetitiveProgramming.Algorithms
             Array.Sort(arr, comparer);
             _compress = new Dictionary<T, int>(arr.Length);
             _decompress = arr;
-            var pi = default(int);
             var pa = default(T);
             if (arr.Any()) _compress.Add(arr[0], 0);
 
             for (var i = 0; i < arr.Length; i++)
-                if (i > 0 && comparer.Compare(arr[i], pa) != 0) _compress[pa = arr[i]] = pi = i;
+                if (i > 0 && comparer.Compare(arr[i], pa) != 0)
+                    _compress[pa = arr[i]] = i;
         }
 
         public int Count => _decompress.Length - 1;
